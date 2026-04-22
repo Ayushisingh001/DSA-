@@ -1,2 +1,3 @@
 # DSA-
-My Data Structures &amp; Algorithms practice from basics to advanced with solutions and explanations.
+A structured collection of my Data Structures and Algorithms journey, covering concepts from fundamentals to advanced topics.  
+Each problem includes solutions along with clear approaches and explanations for better understanding and revision.
