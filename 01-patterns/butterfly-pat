@@ -1,0 +1,143 @@
+1.
+**********
+****  ****
+***    ***
+**      **
+*        *
+*        *
+**      **
+***    ***
+****  ****
+**********
+        int n = 5; //star
+        int inis = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - i; j++) {
+                System.out.print("*");
+            }
+            //space
+            for (int j = 0; j < inis; j++) {
+                System.out.print(" ");
+            }
+
+            //star
+            for (int j = 0; j < n - i; j++) {
+                System.out.print("*");
+
+            }
+            inis += 2;
+            System.out.println();
+            //upper traingle
+        }
+       //lower raingle-->spaced
+        int inis_s = 8;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print("*");
+            }
+            //space
+            for (int j = 0; j < inis_s; j++) {
+                System.out.print(" ");
+            }
+
+            //star
+            for (int j = 0; j <= i; j++) {
+                System.out.print("*");
+
+            }
+            inis_s-= 2;
+            System.out.println();
+        }
+
+
+
+2.
+
+*        *
+**      **
+***    ***
+****  ****
+**********
+**** ****
+***   ***
+**     **
+*       *
+        int n=5;
+        int inis_s = 8;
+        for (int i = 1; i <=n; i++) {
+            for (int j = 1; j <=i; j++) {
+                System.out.print("*");
+            }
+            //space
+            for (int j = 1; j <=inis_s; j++) {
+                System.out.print(" ");
+            }
+
+            //star
+            for (int j = 1; j <=i; j++) {
+                System.out.print("*");
+
+            }
+            inis_s -= 2;
+            System.out.println();
+        }
+        int inis = 2;
+        for (int i = 1; i <=n; i++) {
+            for (int j = 1; j <=n-i; j++) {
+                System.out.print("*");
+            }
+            //space
+            for (int j = 1; j <inis; j++) {
+                System.out.print(" ");
+            }
+            //star
+            for (int j = 1; j <=n-i; j++) {
+                System.out.print("*");
+            }
+            inis += 2;
+            System.out.println();
+        }
+
+3.
+*****
+*   *
+*   *
+*   *
+*****
+        int inis = 2;
+        int n=5;
+        for (int i = 1; i <=n; i++) {
+            for (int j = 1; j <=n; j++) {
+               if(i==1 || j==1 || i==n || j==n)
+               {
+                   System.out.print("*");
+               }
+               else {
+                   System.out.print(" ");
+               }
+            }
+
+            System.out.println();
+        }
+
+
+4.//pascal's triangle
+    1 
+   1 1 
+  1 2 1 
+ 1 3 3 1 
+1 4 6 4 1 
+        int n = 5;
+        for (int i = 0; i < n; i++) {
+            int num = 1; // first value in every row is 1
+            // spaces for alignment (optional)
+            for (int s = 1; s < n - i; s++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j <= i; j++) {
+                System.out.print(num + " ");
+                // formula to generate next number
+                num = num * (i - j) / (j + 1);
+            }
+            System.out.println();
+        }
