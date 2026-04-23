@@ -231,3 +231,7 @@
         }
 
 
+Note:
+**For most pattern problems, Time Complexity is O(n²) because the total number 
+of elements printed is proportional to n². 
+**Space Complexity is O(1) as no extra memory is used apart from variables.
