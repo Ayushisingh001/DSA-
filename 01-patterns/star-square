@@ -14,3 +14,5 @@ for(int i=1;i<n;i++) {
     }
     System.out.println();
 }
+Time Complexity: O(n²)
+Space Complexity: O(1)
