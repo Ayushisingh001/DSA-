@@ -1,0 +1,144 @@
+//extract num
+        int num=7789;
+       int last_digit=0;
+        int count;
+        count = (int)Math.log10(num) + 1;
+        while(num>0){
+             last_digit=num%10;
+            System.out.println("extracted values"+last_digit);
+             num=num/10;
+        }
+        System.out.println("total num"+count);
+
+//count
+        int num=7786;
+        int count;
+        count=(int) Math.log10(num)+1;
+        System.out.println(count);
+
+//reverse n check palindrome
+        int num=121;
+        int original_num=num;
+        int last_digit;
+        int rev=0;
+        while(num>0){
+            last_digit=num%10;
+            num=num/10;
+            rev=(rev*10)+last_digit;
+        }
+        System.out.println("reverse num is"+rev);
+if(original_num==rev)
+{
+    System.out.println("it is palindrome");
+}
+else
+{
+    System.out.println("not a palindrome");
+}
+
+//armstrong num
+
+    int num=371;
+    int arm=num;
+      int last_digit=0;
+      int sum=0;
+              int cube_digit;
+      while(num>0){
+         last_digit=num%10;
+        num=num/10;
+           cube_digit=last_digit*last_digit*last_digit;
+          sum=sum+cube_digit;
+       }
+       System.out.println("exracted num"+last_digit);
+       if(arm==sum)
+     {
+          System.out.println("armstrong num");
+      }
+      else
+       {
+          System.out.println("not");
+     }
+
+//print all the divisors
+       int num=36;
+        System.out.println("these are the divisors");
+      for(int i=1;i<=num;i++)
+       {
+         if(num%i==0)
+          {
+             System.out.println(i);
+          }
+       }
+
+//print the divisor n store it in list for sorting it out
+        int num=13;
+        ArrayList<Integer>list=new ArrayList<>();
+        for(int i=1;i*i<=num;i++)
+        {
+            if(num%i==0) {
+                list.add(i);
+
+                if (i != num / i) {
+                   list.add(num / i);
+               }
+            }
+       }
+        if(list.size()==2)
+        {
+            System.out.println("prime");
+       }
+      else
+       {
+            System.out.println("not");
+        }
+
+//prime
+        int num=11;
+        int count=0;
+        for(int i=1;i*i<=num;i++) {
+            if (num % i == 0) {
+                count++;
+                if (i != num / i) {
+                   count++;
+                }
+            }
+        }
+            if(count==2)
+            {
+                System.out.println("prime");
+            }
+            else {
+               System.out.println("not a prime");
+            }
+
+
+        //gcd
+     int num1=11;
+     int num2=13;
+     int gcd=0;
+     for(int i=1;i*i<=Math.min(num1,num2);i++) {
+          if (num1 % i == 0 && num2 % i == 0) {
+             gcd = i;
+         }
+      }
+     System.out.println(gcd);
+
+        //gcd-using equilateral algo
+        int num1=9;
+        int num2=12;
+
+        while(num1>0 && num2>0) {
+            if (num1 > num2) {
+                num1 = num1 % num2;
+            } else {
+                num2 = num2 % num1;
+            }
+        }
+            if(num1==0)
+            {
+                System.out.println(num2);
+            }
+            else
+            {
+                System.out.println(num1);
+            }
