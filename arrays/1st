@@ -1,5 +1,5 @@
 //Arrays
- //reverse
+// 1.reverse
   int[]arr={1,2,3,4,5,6};
   int n=6;
   int left=0;
@@ -16,3 +16,244 @@
    {
     System.out.print(arr[i]);
   }
+
+//2.find max n min
+        int[]arr={1,2,3,4,5,6};
+        int n=6;
+        int left=0;
+        int right=n-1;
+        int max=arr[0];
+        int min=arr[0];
+        for(int i=0;i<n;i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+
+            }
+            if(min>arr[i])
+            {
+                min=arr[i];
+            }
+
+        }
+        System.out.println("max"+max);
+        System.out.println("min"+min);
+
+
+//3.kth max n min
+        int[]arr={9,5,6,2,3,4,1,8};
+        int n=arr.length;
+        Arrays.sort(arr);
+        int k=4;
+            System.out.println("max"+arr[n-k]);
+            System.out.println("min"+arr[k-1]);
+
+
+//3.kth max n min using priorityQueue (another approach more efficient)
+
+        int[]arr={9,5,6,2,3,4,1,8};
+        int n=arr.length;
+        int k=4;
+        //max using min heap
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        for(int i=0;i<k;i++)
+        {
+            pq.add(arr[i]);
+        }
+        for(int i=k;i<n;i++)
+        {
+            if(arr[i]>pq.peek())
+            {
+                pq.poll();
+                pq.add(arr[i]);
+            }
+
+        }
+        System.out.println("max using mean heap"+pq.peek());
+
+
+//min using max heap
+        PriorityQueue<Integer> pq=new PriorityQueue<>(Collections.reverseOrder()); <-------imp.
+        for(int i=0;i<k;i++)
+        {
+            pq.add(arr[i]);
+        }
+        for(int i=k;i<n;i++)
+        {
+            if(arr[i]<pq.peek())
+            {
+                pq.poll();
+                pq.add(arr[i]);
+            }
+        }
+        System.out.println("min using max heap"+pq.peek());
+
+//4.dutch national flag-problem-->two pointer
+        int[]arr={1,0,2,1,1,1,2,2,2,0,0,1,0};
+        int n=arr.length;
+        //min using max heap
+        int low=0;
+        int high=n-1;
+        int mid=0;
+        while(mid<=high)
+        { if(arr[mid]==0) {
+            int temp = arr[low];
+            arr[low] = arr[mid];
+            arr[mid] = temp;
+            low++;
+            mid++;
+        }
+           else if(arr[mid]==1)
+        {
+            mid++;
+        }
+           else
+        {
+            int temp = arr[mid];
+            arr[mid] = arr[high];
+            arr[high] = temp;
+            high--;
+        }
+        }
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(arr[i]);
+        }
+
+//5.move negetive elements to one side of an array-->two pointer
+        int[]arr={-1,7,8,-4,-3,-2,4,0,5,-6,2};
+        int[] result=new int[arr.length];
+        int n=arr.length;
+        int low=0;
+        int high=n-1;
+        int mid=0;
+        while(mid<=high)
+        {
+            if(arr[mid]<0)
+            {
+                int temp=arr[low];
+                arr[low]=arr[mid];
+                arr[mid]=temp;
+                mid++;
+                low++;
+            }
+            else if(arr[mid]==0)
+            {
+                mid++;
+            }
+            else
+            {
+                int temp=arr[mid];
+                arr[mid]=arr[high];
+                arr[high]=temp;
+                high--;
+
+            }
+        }
+        int i=0;
+        for(int num:arr)
+        {
+            if(num<0)
+            {
+                result[i++]=num;
+            }
+        }
+        for(int num:arr)
+        {
+            if(num>=0)
+            {
+                result[i++]=num;
+            }
+        }
+        for(int num:result)
+        {
+            System.out.print(num+" ");
+        }
+
+Partition with swaps → O(1) space, order not preserved. (no need of making new array to store all elements) here tc->O(n), sc->O(1),
+Stable partition (preserve order) → usually needs extra space or a more complex algorithm. here tc->O(n), sc->O(n),
+
+
+//6. union and intersection
+in case of two sorted arrays--> 2 ptr works best
+int arr1[]={1,2,3,4,5};
+        int arr2[]={6,7,8,9,10};
+        int n1=arr1.length;
+        int n2=arr2.length;
+        int [] result=new int[n1+n2];
+        int i=0;
+        int j=0;
+        while(i<n1 && j<n2)
+        {
+            if(arr1[i]<arr2[j])
+            {
+                System.out.print(arr1[i]+" ");
+                i++;
+            }
+            else if(arr1[i]>arr2[j] )
+            {
+                System.out.print(arr2[j]+" ");
+                j++;
+            }
+            else
+            {
+                System.out.print(arr1[i]+" ");
+                i++;
+                j++;
+            }
+  while(i<n1)
+            {
+                System.out.print(arr1[i]+" ");
+                i++;
+            }
+  while(j<n2)
+            {
+                System.out.print(arr2[j]+" ");
+                j++;
+            }
+        }
+
+Time Complexity: O(n1 + n2)
+Space Complexity: O(1) (since you're only printing)
+
+//in case of two unsorted arrays n  duplicate elements --> Hashset is best!
+//Since the arrays are unsorted and duplicates may exist, HashSet is a better choice because 
+//it removes duplicates automatically and allows faster searching than an ArrayList
+//Operation	         ArrayList	     HashSet
+//Search (contains)	   O(n)	      O(1) average
+
+//union-->
+HashSet<Integer> set = new HashSet<>();
+        for(int num:arr1)
+        {
+            set.add(num);
+        }
+        for(int num:arr2)
+        {
+            set.add(num);
+        }
+        System.out.println(set);
+
+//Time Complexity: O(n1 + n2) because each insertion into a HashSet takes O(1) on average.
+//Space Complexity: O(n1 + n2) in the worst case when all elements are distinct.
+
+//intersection-->
+        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> intersection = new HashSet<>();
+
+        for(int num:arr1)
+        {
+            set.add(num);
+        }
+        for(int num:arr2)
+        {
+            if(set.contains(num))
+            {
+                intersection.add(num);
+            }
+
+        }
+        System.out.println(intersection);
+//TC: O(n1 + n2)
+//SC: O(n1 + n2) (because of the second set)
+
+
