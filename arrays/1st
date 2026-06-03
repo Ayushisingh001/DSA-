@@ -257,3 +257,91 @@ HashSet<Integer> set = new HashSet<>();
 //SC: O(n1 + n2) (because of the second set)
 
 
+//7.cyclically rotate an array by one
+        int arr[]={1,8,3,4,5};
+        int n=arr.length;
+        int temp=arr[n-1];
+        for(int i=n-1;i>0;i--)
+        {
+            arr[i]=arr[i-1];
+        }
+        arr[0]=temp;
+    }
+
+
+//8.find the largest sum contiguous subarray
+//kadane's algorithm-->when count becomes negetive make it zero and keep  adding and compare with max
+        int arr[]={-2,1,-3,4,-1,2,1,-5,4};
+        int n=arr.length;
+        int max=arr[0];
+        int count=0;
+        for(int i=0;i<n;i++)
+        {
+            if(count<0)
+            {
+                count=0;
+            }
+            count=count+arr[i];
+            if(count>max)
+            {
+                max=count;
+            }
+        }
+        System.out.println("max count"+max);
+    }
+
+
+//9.  Print the largest sum contiguous subarray no. instead of just sum
+        int arr[]={-2,1,-3,4,-1,2,1,-5,4};
+        int n=arr.length;
+        int max=arr[0];
+        int current_sum=0;
+        int tempstart=0;
+        int end=0;
+        int start=0;
+        for(int i=0;i<n;i++)
+        {
+            current_sum+=arr[i];
+            if(current_sum>max)
+            {
+               max=current_sum;
+               start=tempstart;
+               end=i;
+            }
+            if(current_sum<0)
+            {
+                current_sum=0;
+                tempstart=i+1;
+            }
+        }
+        for(int i=start;i<=end;i++)
+        {
+            System.out.println(arr[i]);
+        }
+        System.out.println("max count"+max);
+
+
+
+ //   10. problem 26 on leetcode -->remove duplicate elements
+        class Solution {
+        public int removeDuplicates(int[] nums) {
+        int n=nums.length;
+        if(nums.length==0)
+        {
+            return 0;
+        }
+        int j=1;
+        for(int i=1;i<n;i++)
+        {
+           if(nums[i]!=nums[i-1])
+           {
+            nums[j]=nums[i];
+            j++;
+           }
+        }
+           return j;
+    }
+}
+
+
+
