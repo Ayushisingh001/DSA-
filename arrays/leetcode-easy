@@ -1,1 +1,55 @@
+//1.Two sum--leetcode
+//brute force
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] result=new int[2];
+        int n=nums.length;
+        for(int i=0;i<n;i++)
+        { 
+            for(int j=i+1;j<n;j++)
+            { 
+             if(nums[i]+nums[j]==target) 
+             {
+              result[0]=i; 
+              result[1]=j;
+             }
+            }
+        }
+        return result;
+        }
+}
+TC =O(n²)
+SC= O(1)
 
+---->//optimized approach
+//No sorting required.
+//Preserves original indices naturally.
+//Better time complexity: O(n) vs O(n log n).
+
+Order from fastest to slowest
+O(1)<O(logn)<O(n)<O(nlogn)<O(n^2)<O(n^3)<O(2n)
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+      HashMap<Integer,Integer>map=new HashMap<>();
+
+      int n=nums.length;
+      for(int i=0;i<n;i++)
+      {
+        int complement=target-nums[i];
+
+        if(map.containsKey(complement))
+        {
+          return new int[]{map.get(complement),i};
+        }
+        map.put(nums[i],i);
+      }
+      return new int[]{};
+}
+}
+
+TC =O(n)
+SC =O(n)
+
+
+//2.
