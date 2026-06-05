@@ -273,3 +273,11 @@ another approach--->hashmap
         }
 TC=O(n)
 SC=O(n)
+
+
+
+//11.Check if two strings are anagrams
+//12.Find duplicate characters in a string
+//13.Count words in a sentence
+//14.Find the most frequent character
+//15.Compress a string
