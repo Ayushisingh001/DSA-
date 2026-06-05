@@ -103,3 +103,173 @@ another approach--->//using string builder
     }
     TC=O(n)
     SC=O(n)
+
+
+
+//6. Palindrome or not
+        //MADAM
+        String word="madam";
+        int n=word.length();
+        String reverse="";
+        for(int i=n-1;i>=0;i--)
+        {
+            reverse+=word.charAt(i);
+        }
+        System.out.println(reverse);
+        if(word.equals(reverse))
+        {
+            System.out.println("palindrome");
+        }
+         else
+        {
+            System.out.println("not a palindrome");
+        }
+         TC=O(n²)
+         SC=O(n)
+
+another approach---> using string builder
+ String word="madam";
+        int n=word.length();
+        StringBuilder rev=new StringBuilder();
+        for(int i=n-1;i>=0;i--)
+        {
+            rev.append(word.charAt(i));
+        }
+        System.out.println(rev);
+        if(word.equals(rev.toString()))
+        {
+            System.out.println("palindrome");
+        }
+         else
+        {
+            System.out.println("not a palindrome");
+        }
+TC=O(n)
+SC=O(n)
+
+another approach-->2 ptr
+        String word="madam";
+        int n=word.length();
+       boolean palindrome=true;
+        int left=0;
+        int right=n-1;
+        while(left<right)
+        {
+if(word.charAt(left)!=word.charAt(right))
+{
+    palindrome=false;
+    break;
+}
+left++;
+right--;
+}
+System.out.println(palindrome ? "palindrome" : "not a palindrome");
+TC=O(n)
+SC=O(1)
+
+
+//7. count the no. of characters in a word
+String word="madam";
+        int n=word.length();
+        int count=0;
+        for(int i=0;i<n;i++)
+        { 
+            count++;
+        }
+        System.out.println(count);
+TC=O(n)
+SC=O(1)
+
+
+// 8.Remove all spaces from a string
+        String word="hello word";
+        StringBuilder res=new StringBuilder();
+        int n=word.length();
+        int count=0;
+        for(int i=0;i<n;i++)
+        {
+            char ch=word.charAt(i);
+            if(ch!=' ')
+            {
+             res.append(ch);
+            }
+
+        }
+        System.out.println(res);
+TC=O(n)
+SC=O(n)
+
+
+//9. Convert lowercase to uppercase (without built-in methods)         (low-->up)
+        String name="ayushi";
+        int n=name.length();
+        for(int i=0;i<n;i++)
+        {
+            char ch=name.charAt(i);
+
+            if(ch>='a' && ch<='z')
+            {
+             ch= (char) (ch-32);
+            }
+            System.out.println(ch);
+        }
+
+-->Convert uppercase to lowercase (without built-in methods)             (up-->low)
+         String name="AYUSHI";
+         int n=name.length();
+         for(int i=0;i<n;i++)
+        {
+            char ch=name.charAt(i);
+
+            if(ch>='A' && ch<='Z')
+            {
+             ch= (char) (ch+32);
+            }
+            System.out.println(ch);
+        }
+TC = O(n)
+SC = O(1)
+
+
+
+//10.Find the first non-repeating character
+//brute force
+String word = "hheelo";
+int n = word.length();
+for(int i = 0; i < n; i++)
+{
+    int count = 0;
+    for(int j = 0; j < n; j++)
+    {
+        if(word.charAt(i) == word.charAt(j))
+        {
+            count++;
+        }
+    }
+    if(count == 1)
+    {   System.out.println("First non-repeating character: " + word.charAt(i));
+        break;
+    }
+}
+TC= O(n²)
+SC= O(1)
+
+another approach--->hashmap
+         String word = "hheelo";
+        int n = word.length();
+        HashMap<Character, Integer> map = new HashMap<>();
+
+         for (int i = 0; i < n; i++) {
+            char ch = word.charAt(i);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+        for (int i = 0; i < n; i++) {
+            char ch = word.charAt(i);
+
+            if (map.get(ch) == 1) {
+                System.out.println(ch);
+                break;
+            }
+        }
+TC=O(n)
+SC=O(n)
