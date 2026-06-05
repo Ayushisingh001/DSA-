@@ -1,1 +1,105 @@
+// 1.Print each character of a string
+        String name="hello";
+        int n=name.length();
+        for(int i=0;i<n;i++)
+        {
+            System.out.println(name.charAt(i));
+        }
+    }
+o/p-->
+h
+e
+l
+l
+o
 
+TC=O(n)
+SC=O(1)
+
+
+
+// 2.Count the length of a string
+      String greet="goodmorning";
+        System.out.println(greet.length());
+-->11
+
+TC=O(1)
+SC=O(1)
+
+
+
+//3.Count vowels in a string
+        String greet = "goodmorning";
+        int n = greet.length();
+        int count=0;
+        for(int i=0;i<n;i++) {
+            char ch = greet.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                count++;
+            }
+        }
+        System.out.println("vowel count"+count);
+TC=O(n)
+SC=O(1)
+
+
+
+//4. Count uppercase and lowercase letters
+        String name="AYUshI SinGH";
+        int n=name.length();
+        int uppercase=0;
+        int lowercase=0;
+        for(int i=0;i<n;i++)
+        {
+            char ch=name.charAt(i);
+            if(ch>='A' && ch<='Z')
+            {
+                uppercase++;
+            }
+            else if(ch>='a' && ch<='z')
+            {
+                lowercase++;
+            }
+        }
+        System.out.print("uppercase "+uppercase+" lowercase "+lowercase);
+TC=O(n)
+SC=O(1)
+
+
+
+//5.Reverse a string
+        String greet = "goodmorning";
+        int n=greet.length();
+        for(int i=n-1;i>=0;i--)
+        {
+            System.out.println("reverse is"+greet.charAt(i));
+        }
+TC=O(n)
+SC=O(1)
+
+another approach--->//Reverse a string  
+//If asked to reverse a string without built-in methods, use:
+        String greet = "goodmorning";
+        String reverse=" ";
+        int n=greet.length();
+        for(int i=n-1;i>=0;i--)
+        {
+            reverse+=greet.charAt(i);
+        }
+        System.out.println("reverse is"+reverse);
+    }
+TC=O(n²): O(n²) because string concatenation creates new strings repeatedly.
+SC=O(n)
+
+another approach--->//using string builder
+ String greet = "goodmorning";
+        StringBuilder reverse=new StringBuilder(greet);
+        int n=greet.length();
+        for(int i=n-1;i>=0;i--)
+        {
+            reverse.append(greet.charAt(i));
+        }
+        System.out.println("reverse is "+reverse);
+    }
+    TC=O(n)
+    SC=O(n)
