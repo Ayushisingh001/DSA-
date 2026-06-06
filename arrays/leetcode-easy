@@ -52,4 +52,27 @@ TC =O(n)
 SC =O(n)
 
 
-//2.
+//2. problem no.2574
+class Solution {
+        public int[] leftRightDifference(int[] nums) {
+        int n=nums.length;
+        int[] answer=new int[n];
+
+        int totalsum=0;
+        int left_sum=0;
+        
+        for(int i:nums)
+        {
+            totalsum+=i;
+        }
+        for(int i=0;i<n;i++)
+        {
+        int right_sum=totalsum-left_sum-nums[i];
+        answer[i]=Math.abs(left_sum-right_sum);
+         left_sum+=nums[i];
+        }
+        return answer;
+    }
+}
+TC=O(n)
+SC=O(1)
