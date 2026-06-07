@@ -276,8 +276,143 @@ SC=O(n)
 
 
 
-//11.Check if two strings are anagrams
+//11.Check if two strings are anagrams-->leetcode 242.
+ if(s.length()!=t.length())
+        {
+           return false;
+        }
+        int[] freq=new int[26];
+        for(int i=0;i<s.length();i++)
+        {
+          freq[s.charAt(i)-'a']++;
+          freq[t.charAt(i)-'a']--;
+        }
+        for(int count:freq)
+        {
+            if(count!=0)
+            {
+                return false;
+            }
+        }
+        return true;
+TC=O(n)
+SC=O(1)
+//"The solution uses a frequency array of size 26. I traverse both strings once, so the time complexity is O(n).
+//The extra space used is a fixed-size array of 26 integers, so the space complexity is O(1)."
+
+
+
 //12.Find duplicate characters in a string
+//brute force
+ String word="programming";
+        int n=word.length();
+        int[] freq=new int[26];
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(word.charAt(i)==word.charAt(j))
+                {
+                    System.out.println("duplicate  char"+word.charAt(j));
+                }
+            }
+        }
+TC=O(n²)
+SC=O(1)
+
+Another approach-->optimized solution
+        String word="programming";
+        int n=word.length();
+        int[] freq=new int[26];
+
+        for(int i=0;i<n;i++)
+        {
+            freq[word.charAt(i)-'a']++;
+        }
+
+for(int i=0;i<26;i++)
+{
+    if(freq[i]>1)
+    {
+        System.out.println((char)(i+'a'));
+    }
+}
+TC=O(n)
+SC=O(1)
+
+
+
 //13.Count words in a sentence
+String sentence="Hi I am ayushi singh from pune, i love reading and writing";
+int n=sentence.length();
+int count=0;
+        for(int i=0;i<n;i++)
+        {
+            if(i==0 && sentence.charAt(i)!=' ')
+            {
+                count++;
+            }
+            else if(sentence.charAt(i)!=' ' && sentence.charAt(i-1)==' ')
+            {
+                count++;
+            }
+        }
+        System.out.println(count);
+TC=O(n)
+SC=O(1)
+
+
+
 //14.Find the most frequent character
+         String word="helllo";
+        int n=word.length();
+        int[] freq=new int[26];
+       int max=0;
+      char most_freq=' ';
+        for(int i=0;i<n;i++)
+        {
+            freq[word.charAt(i)-'a']++;
+        }
+        for(int i=0;i<26;i++) {
+            if (freq[i] > max) {
+                max = freq[i];
+                most_freq=(char)(i+'a');
+            }
+        }
+        System.out.println("most frequent char is" + most_freq);
+TC=O(n)
+SC=O(1)
+
+
+
 //15.Compress a string
+//input=aaabbccccd
+//output=a3b2c4d1
+
+//****String compression cares about consecutive characters, not total frequency.******
+        String word="aabcccccaaa";
+        int n=word.length();
+        int count=1;
+        for(int i=1;i<n;i++) {
+            if (word.charAt(i) == word.charAt(i - 1)) {
+                count++;
+            } else {
+                System.out.print(word.charAt(i - 1));
+                System.out.print(count);
+                count = 1;
+            }
+        }
+            System.out.print(word.charAt(word.length() - 1));
+            System.out.print(count);
+TC=O(n)
+SC=O(1)
+
+
+
+
+
+
+
+
+
