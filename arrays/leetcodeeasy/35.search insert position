@@ -1,0 +1,60 @@
+//35.search insert position
+//brute force
+//this is wat i could think of
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int n=nums.length;
+        int ans=0;
+        int t=0;
+        for(int i=0;i<n;i++)
+        {
+            if(target==nums[i])
+            {
+                return i;
+            }
+            else if(target<nums[i])
+            {
+             return i;
+            }
+            else
+            {
+                ans=i+1;
+            }
+        }
+          return ans;
+    }
+}
+
+TC=O(n)  //in question it is asked to have logn 
+SC=O(1)
+
+//optimized approach
+//If the array is sorted and the problem mentions O(log n), think Binary Search first.
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int n=nums.length;
+        int left=0;
+        int right=n-1;
+       
+       while(left<=right)
+       {
+        int mid=left+(right-left)/2;
+
+        if(nums[mid]==target)
+        {
+            return mid;
+        }
+        else if(target<nums[mid])
+        {
+            right=mid-1;
+        }
+        else
+        {
+            left=mid+1;
+        }
+       }
+       return left;
+    }
+}
+TC=O(logn)
+SC=O(1)
