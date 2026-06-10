@@ -1,1 +1,89 @@
+//1. 3sum
+//brute force
+int[] nums = {-1,0,1,2,-1,-4};
+        int n =nums.length;
+        for(int i=0;i<n;i++) {
+            for (int j = i + 1; j < n; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    if (nums[i] + nums[j] + nums[k] == 0)
+                    {
+                        System.out.println(nums[i] + " " + nums[j] + " " + nums[k]);
+                    }
+                }
+            }
+        }
+TC = O(n³)
+SC = O(1)
+For n = 3000, this becomes very slow.
+o/p-->-1 0 1
+      -1 2 -1
+       0 1 -1
+
+--->//efficient approach
+import java.util.*;
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        int n = nums.length;
+        Arrays.sort(nums);
+
+        for (int i = 0; i < n - 2; i++) {
+
+            // Skip duplicate first elements
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            int left = i + 1;
+            int right = n - 1;
+
+            while (left < right) {
+
+                int sum = nums[i] + nums[left] + nums[right];
+
+                if (sum == 0) {
+
+                    result.add(Arrays.asList(
+                            nums[i],
+                            nums[left],
+                            nums[right]
+                    ));
+
+                    // Skip duplicate left values
+                    while (left < right &&
+                           nums[left] == nums[left + 1]) {
+                        left++;
+                    }
+
+                    // Skip duplicate right values
+                    while (left < right &&
+                           nums[right] == nums[right - 1]) {
+                        right--;
+                    }
+
+                    left++;
+                    right--;
+                }
+
+                else if (sum < 0) {
+                    left++;
+                }
+
+                else {
+                    right--;
+                }
+            }
+        }
+
+        return result;
+    }
+}
+T.C-->O(n^2)
+S.C-->O(1)
+
+
+//2.
 
