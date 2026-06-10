@@ -1,0 +1,43 @@
+class Solution {
+
+    public boolean isOneEditDistance(String s, String t) {
+
+        if(Math.abs(s.length() - t.length()) > 1)
+            return false;
+
+        if(s.equals(t))
+            return false;
+
+        // Replace case
+        if(s.length() == t.length()) {
+
+            int diff = 0;
+
+            for(int i = 0; i < s.length(); i++) {
+                if(s.charAt(i) != t.charAt(i))
+                    diff++;
+            }
+
+            return diff == 1;
+        }
+
+        // Insert/Delete case
+
+        String longer = s.length() > t.length() ? s : t;
+        String shorter = s.length() > t.length() ? t : s;
+
+        for(int i = 0; i < longer.length(); i++) {
+
+            String removed =
+                    longer.substring(0, i)
+                    + longer.substring(i + 1);
+
+            if(removed.equals(shorter))
+                return true;
+        }
+
+        return false;
+    }
+}
+Time Complexity = O(n²)
+Space Complexity = O(n)
