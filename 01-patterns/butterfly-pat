@@ -52,60 +52,6 @@ Time Complexity: O(n²)
 Space Complexity: O(1)
 
 
-1.
-**********
-****  ****
-***    ***
-**      **
-*        *
-*        *
-**      **
-***    ***
-****  ****
-**********
-        int n = 5; //star
-        int inis = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n - i; j++) {
-                System.out.print("*");
-            }
-            //space
-            for (int j = 0; j < inis; j++) {
-                System.out.print(" ");
-            }
-
-            //star
-            for (int j = 0; j < n - i; j++) {
-                System.out.print("*");
-
-            }
-            inis += 2;
-            System.out.println();
-            //upper traingle
-        }
-       //lower raingle-->spaced
-        int inis_s = 8;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= i; j++) {
-                System.out.print("*");
-            }
-            //space
-            for (int j = 0; j < inis_s; j++) {
-                System.out.print(" ");
-            }
-
-            //star
-            for (int j = 0; j <= i; j++) {
-                System.out.print("*");
-
-            }
-            inis_s-= 2;
-            System.out.println();
-        }
-Time Complexity: O(n²)
-Space Complexity: O(1)
-
-
 
 2.
 
